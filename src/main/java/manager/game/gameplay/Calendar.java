@@ -2,8 +2,6 @@ package manager.game.gameplay;
 
 import lombok.Getter;
 import lombok.Setter;
-import manager.game.main.PlayerAttributes;
-import manager.game.team.Team;
 
 import java.time.LocalDate;
 

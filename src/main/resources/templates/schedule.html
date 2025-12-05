@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendário & Classificação - Futebol Manager</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      background: #1e293b;
+    }
+    th, td {
+      border: 1px solid #334155;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background: #334155;
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background: #0f172a;
+    }
+    .top4 {
+      background: #166534 !important;
+      font-weight: bold;
+    }
+    h2 {
+      color: #22c55e;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 th:text="${leagueName} + ' 2024'">Série A 2024</h1>
+  <h2>Classificação</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Pos</th>
+      <th>Time</th>
+      <th>Pts</th>
+      <th>J</th>
+      <th>V</th>
+      <th>E</th>
+      <th>D</th>
+      <th>GP</th>
+      <th>GC</th>
+      <th>SG</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry, stat : ${teams}"
+        th:classappend="${stat.count <= 4} ? 'top4' : ''">
+      <td th:text="${stat.count}"></td>
+      <td th:text="${entry.key.name}"></td>
+      <td th:text="${entry.value}"></td>
+      <td th:text="${entry.key.wins + entry.key.draws + entry.key.losses}"></td>
+      <td th:text="${entry.key.wins}"></td>
+      <td th:text="${entry.key.draws}"></td>
+      <td th:text="${entry.key.losses}"></td>
+      <td th:text="${entry.key.goals}"></td>
+      <td th:text="${entry.key.goalsAgainst}"></td>
+      <td th:text="${entry.key.goalsBalance}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2>Calendário Completo (380 jogos)</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Rodada</th>
+      <th>Data</th>
+      <th>Casa</th>
+      <th></th>
+      <th>Visitante</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="match, stat : ${matches}" th:if="${match != null}">
+      <td th:text="${stat.count}"></td>
+      <td th:text="${#temporals.format(match.date, 'dd/MM/yyyy')}"></td>
+      <td th:text="${match.homeTeam.name}"></td>
+      <td><strong>×</strong></td>
+      <td th:text="${match.awayTeam.name}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <a th:href="@{/}" class="btn">Voltar ao menu</a>
+</div>
+</body>
+</html>

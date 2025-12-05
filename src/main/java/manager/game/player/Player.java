@@ -5,7 +5,7 @@ import manager.game.team.Team;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import manager.game.myUtils.Value;
+import manager.game.core.GameUtils;
 
 import java.time.LocalDate;
 
@@ -38,8 +38,8 @@ public abstract class Player {
 
         this.id          = id;
         this.name        = name;
-        this.height      = Value.normalize(height, minHeight, maxHeight);
-        this.weight      = Value.normalize(weight, minWeight, maxWeight);
+        this.height      = GameUtils.normalize(height, minHeight, maxHeight);
+        this.weight      = GameUtils.normalize(weight, minWeight, maxWeight);
         this.agility     = agility;
         this.passing     = passing;
         this.impulsion   = impulsion;
@@ -94,7 +94,7 @@ public abstract class Player {
     }
 
     protected int jumpReach(){
-        return Value.normalize(impulsion + (int)Math.round(0.3 * (21-weight) + 0.7 * height), Value.getMINIMUM_ATTRIBUTES() * 2, Value.getATTRIBUTES_THRESHOLD() * 2);
+        return GameUtils.normalize(impulsion + (int)Math.round(0.3 * (21-weight) + 0.7 * height), GameUtils.getMINIMUM_ATTRIBUTES() * 2, GameUtils.getATTRIBUTES_THRESHOLD() * 2);
     }
 
     protected void injuryRisk(){

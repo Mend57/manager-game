@@ -2,10 +2,9 @@ package manager.game.player;
 
 import lombok.AccessLevel;
 import manager.game.team.Team;
-import manager.game.myUtils.Value;
+import manager.game.core.GameUtils;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 
@@ -54,7 +53,7 @@ public class Outfield extends Player {
     @Override
     protected int jumpReach(){
         int minStamina = 12;
-        return Value.normalize(super.jumpReach() - staminaPenalty(minStamina), Value.getMINIMUM_ATTRIBUTES(), Value.getATTRIBUTES_THRESHOLD());
+        return GameUtils.normalize(super.jumpReach() - staminaPenalty(minStamina), GameUtils.getMINIMUM_ATTRIBUTES(), GameUtils.getATTRIBUTES_THRESHOLD());
     }
 
     @Override
@@ -94,13 +93,13 @@ public class Outfield extends Player {
             }
             case null: multiplier = 1;
         }
-        return Value.normalize(Math.random() * 3 + multiplier * competence(), 0.25 * Value.getMINIMUM_ATTRIBUTES(), 3 + Value.getATTRIBUTES_THRESHOLD());
+        return GameUtils.normalize(Math.random() * 3 + multiplier * competence(), 0.25 * GameUtils.getMINIMUM_ATTRIBUTES(), 3 + GameUtils.getATTRIBUTES_THRESHOLD());
     }
 
     private int speed(){
-        int fullSpeed  = Value.normalize(velocity + (int)Math.round(0.3 * (21-getWeight()) + 0.7 * getHeight()), Value.getMINIMUM_ATTRIBUTES() * 2, Value.getATTRIBUTES_THRESHOLD() * 2);
+        int fullSpeed  = GameUtils.normalize(velocity + (int)Math.round(0.3 * (21-getWeight()) + 0.7 * getHeight()), GameUtils.getMINIMUM_ATTRIBUTES() * 2, GameUtils.getATTRIBUTES_THRESHOLD() * 2);
         int minStamina = 14;
-        return Value.normalize(fullSpeed - staminaPenalty(minStamina), Value.getMINIMUM_ATTRIBUTES(), Value.getATTRIBUTES_THRESHOLD());
+        return GameUtils.normalize(fullSpeed - staminaPenalty(minStamina), GameUtils.getMINIMUM_ATTRIBUTES(), GameUtils.getATTRIBUTES_THRESHOLD());
     }
 
     private int strength(){
@@ -114,15 +113,15 @@ public class Outfield extends Player {
     }
 
     private double defensiveCompetence(){
-        return Value.normalize(marking + getTechnique() + jumpReach() + strength() + getAgility() + getPassing() + speed(), 7 * Value.getMINIMUM_ATTRIBUTES(), 7 * Value.getATTRIBUTES_THRESHOLD());
+        return GameUtils.normalize(marking + getTechnique() + jumpReach() + strength() + getAgility() + getPassing() + speed(), 7 * GameUtils.getMINIMUM_ATTRIBUTES(), 7 * GameUtils.getATTRIBUTES_THRESHOLD());
     }
 
     private double midfieldCompetence(){
-        return Value.normalize(marking + dribbling + longShots + getTechnique() + jumpReach() + strength() + getAgility() + getPassing() + speed(), 9 * Value.getMINIMUM_ATTRIBUTES(), 9 * Value.getATTRIBUTES_THRESHOLD());
+        return GameUtils.normalize(marking + dribbling + longShots + getTechnique() + jumpReach() + strength() + getAgility() + getPassing() + speed(), 9 * GameUtils.getMINIMUM_ATTRIBUTES(), 9 * GameUtils.getATTRIBUTES_THRESHOLD());
     }
 
     private double attackCompetence(){
-        return Value.normalize( finishing + dribbling + longShots + getTechnique() + jumpReach() + strength() + getAgility() + getPassing() + speed(), 9 * Value.getMINIMUM_ATTRIBUTES(), 9 * Value.getATTRIBUTES_THRESHOLD());
+        return GameUtils.normalize( finishing + dribbling + longShots + getTechnique() + jumpReach() + strength() + getAgility() + getPassing() + speed(), 9 * GameUtils.getMINIMUM_ATTRIBUTES(), 9 * GameUtils.getATTRIBUTES_THRESHOLD());
     }
 
 }

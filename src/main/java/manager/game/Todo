@@ -39,17 +39,7 @@
 
 -rework of formation familiarity, take it out from Team and add to Player, then calculate Team formation familiarity based on players
 
-
-
 - finish calendar and every unfinished method throughout the codebase(probably unfinished because it depends on the db)
 
-
-Menu
-------
--Team/Tactic
--Training
--Schedule/competition
--Market
--Finances
-
+-na hora de calcular aniversario atençao ao ano bissexto
 

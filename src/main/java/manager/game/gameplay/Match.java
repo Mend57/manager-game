@@ -3,7 +3,7 @@ package manager.game.gameplay;
 import lombok.Getter;
 import manager.game.player.Player;
 import manager.game.team.Team;
-import manager.game.myUtils.Value;
+import manager.game.core.GameUtils;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class Match {
     }
 
     public double getPerformance(Team team, double homeMultiplier){
-        return Value.normalize(team.teamCompetence(true) + Math.random() * 2, Value.getMINIMUM_ATTRIBUTES(), Value.getATTRIBUTES_THRESHOLD() * homeMultiplier + 2);
+        return GameUtils.normalize(team.teamCompetence(true) + Math.random() * 2, GameUtils.getMINIMUM_ATTRIBUTES(), GameUtils.getATTRIBUTES_THRESHOLD() * homeMultiplier + 2);
     }
 
     private boolean checkForMissingPlayer(Team team){

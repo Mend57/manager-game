@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futebol Manager</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Futebol Manager 2024</h1>
+        <div class="date" th:text="${#temporals.format(today, 'dd/MM/yyyy')}">15/02/2024</div>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Bem-vindo, Manager!</h2>
+            <p>Escolha uma opção para começar:</p>
+
+            <div class="buttons">
+                <a th:href="@{/team}" class="btn primary">Team</a>
+                <a th:href="@{/training}" class="btn">Training</a>
+                <a th:href="@{/schedule}" class="btn">Schedule</a>
+                <a th:href="@{/market}" class="btn">Market</a>
+                <a th:href="@{/finances}" class="btn">Finances</a>
+            </div>
+        </div>
+
+        <div class="next-match card">
+            <h3>Próximo Jogo</h3>
+            <div class="match" th:if="${nextMatch != null}">
+                <span th:text="${nextMatch.homeTeam.name}">Time A</span>
+                <strong> vs </strong>
+                <span th:text="${nextMatch.awayTeam.name}">Time B</span>
+                <div class="match-date" th:text="${#temporals.format(nextMatch.date, 'dd/MM')}"></div>
+            </div>
+            <div class="no-match" th:if="${nextMatch == null}">
+                Sem jogos marcados
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

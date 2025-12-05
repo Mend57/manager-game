@@ -1,10 +1,9 @@
 package manager.game.player;
 
 import manager.game.team.Team;
-import manager.game.myUtils.Value;
+import manager.game.core.GameUtils;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class Goalkeeper extends Player{
 
@@ -17,12 +16,12 @@ public class Goalkeeper extends Player{
 
     @Override
     public double competence(){
-        return Value.normalize(jumpReach() + getAgility() + getPassing() + getTechnique(), 4 * Value.getMINIMUM_ATTRIBUTES(), 4 * Value.getATTRIBUTES_THRESHOLD());
+        return GameUtils.normalize(jumpReach() + getAgility() + getPassing() + getTechnique(), 4 * GameUtils.getMINIMUM_ATTRIBUTES(), 4 * GameUtils.getATTRIBUTES_THRESHOLD());
     }
 
     @Override
     public double inGameCompetence(){
-        return Value.normalize(Math.random() * 3 + competence(), Value.getMINIMUM_ATTRIBUTES(), 3 + Value.getATTRIBUTES_THRESHOLD());
+        return GameUtils.normalize(Math.random() * 3 + competence(), GameUtils.getMINIMUM_ATTRIBUTES(), 3 + GameUtils.getATTRIBUTES_THRESHOLD());
     }
 
 //    @Override

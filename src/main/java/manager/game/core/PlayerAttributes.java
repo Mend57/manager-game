@@ -1,4 +1,4 @@
-package manager.game.main;
+package manager.game.core;
 
 import lombok.Getter;
 import lombok.Setter;

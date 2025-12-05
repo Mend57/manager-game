@@ -8,7 +8,7 @@ import manager.game.player.Position;
 import manager.game.gameplay.Market;
 import lombok.AccessLevel;
 import lombok.Setter;
-import manager.game.myUtils.Value;
+import manager.game.core.GameUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -129,7 +129,7 @@ public class Team implements FilterByPosition {
                             defensorsSorted = sortPlayersByCompetence(defensorsCompetenceMap), midfieldersSorted = sortPlayersByCompetence(midfieldersCompetenceMap),
                             attackersSorted = sortPlayersByCompetence(attackersCompetenceMap);
 
-        // Select main goalkeeper for mainPlayers and reservePlayers
+        // Select core goalkeeper for mainPlayers and reservePlayers
         boolean hasGoalKeeper = false;
         Iterator<Player> iterator = goalkeepersSorted.keySet().iterator();
 
@@ -298,9 +298,9 @@ public class Team implements FilterByPosition {
             reservePlayers = originalReservePlayers;
         }
 
-        return Value.normalize(mainCompetence + reserveCompetence / 2,
-                        (numOfReservePlayers * Value.getMINIMUM_ATTRIBUTES()) / 4.0 + (numOfMainPlayers-1) * Value.getMINIMUM_ATTRIBUTES() + Value.getMINIMUM_ATTRIBUTES() / 2.0,
-                        (numOfReservePlayers * Value.getATTRIBUTES_THRESHOLD()) / 2.0 + (numOfMainPlayers-1) * Value.getATTRIBUTES_THRESHOLD()) + Value.getATTRIBUTES_THRESHOLD() / 2.0;
+        return GameUtils.normalize(mainCompetence + reserveCompetence / 2,
+                        (numOfReservePlayers * GameUtils.getMINIMUM_ATTRIBUTES()) / 4.0 + (numOfMainPlayers-1) * GameUtils.getMINIMUM_ATTRIBUTES() + GameUtils.getMINIMUM_ATTRIBUTES() / 2.0,
+                        (numOfReservePlayers * GameUtils.getATTRIBUTES_THRESHOLD()) / 2.0 + (numOfMainPlayers-1) * GameUtils.getATTRIBUTES_THRESHOLD()) + GameUtils.getATTRIBUTES_THRESHOLD() / 2.0;
     }
 
 //    public boolean canBuy(){
