@@ -1,6 +1,6 @@
 package manager.game.player;
 
-import manager.game.gameplay.Calendar;
+import manager.game.gameplay.GameCalendar;
 import manager.game.team.Team;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -75,8 +75,8 @@ public abstract class Player {
         registered = false;
     }
     public void setAge(){
-        int yearsDifference = Calendar.getYear() - birthday.getYear();
-        age = Calendar.getDay() >= birthday.getDayOfMonth() ? yearsDifference : yearsDifference - 1;
+        int yearsDifference = GameCalendar.getYear() - birthday.getYear();
+        age = GameCalendar.getDay() >= birthday.getDayOfMonth() ? yearsDifference : yearsDifference - 1;
     }
     public void estimatePrice(){
         if(!isForSale()) {

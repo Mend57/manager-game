@@ -1,42 +1,65 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futebol Manager</title>
+    <title>Football Manager 2024</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <div class="container">
     <header>
-        <h1>Futebol Manager 2024</h1>
+        <h1>Football Manager 2024</h1>
         <div class="date" th:text="${#temporals.format(today, 'dd/MM/yyyy')}">15/02/2024</div>
     </header>
 
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+
     <main>
         <div class="card">
-            <h2>Bem-vindo, Manager!</h2>
-            <p>Escolha uma opção para começar:</p>
+            <h2>Welcome back, Manager!</h2>
+            <p>Choose an option to continue:</p>
 
             <div class="buttons">
-                <a th:href="@{/team}" class="btn primary">Team</a>
-                <a th:href="@{/training}" class="btn">Training</a>
-                <a th:href="@{/schedule}" class="btn">Schedule</a>
-                <a th:href="@{/market}" class="btn">Market</a>
-                <a th:href="@{/finances}" class="btn">Finances</a>
+                <a th:href="@{/team}"      class="btn primary">Team</a>
+                <a th:href="@{/training}"  class="btn">Training</a>
+                <a th:href="@{/schedule}"  class="btn">Schedule</a>
+                <a th:href="@{/market}"    class="btn">Market</a>
+                <a th:href="@{/finances}"  class="btn">Finances</a>
+            </div>
+            <div class="next-day-wrapper">
+                <form th:action="@{/advance-day}" method="post">
+                    <button type="submit" class="advance-btn">Next Day</button>
+                </form>
             </div>
         </div>
 
         <div class="next-match card">
-            <h3>Próximo Jogo</h3>
+            <h3>Next Match</h3>
+
             <div class="match" th:if="${nextMatch != null}">
-                <span th:text="${nextMatch.homeTeam.name}">Time A</span>
-                <strong> vs </strong>
-                <span th:text="${nextMatch.awayTeam.name}">Time B</span>
-                <div class="match-date" th:text="${#temporals.format(nextMatch.date, 'dd/MM')}"></div>
+                <div class="match-teams">
+                    <span th:text="${nextMatch.homeTeam.name}">Home Team</span>
+                    <strong class="vs">vs</strong>
+                    <span th:text="${nextMatch.awayTeam.name}">Away Team</span>
+                </div>
+
+                <div class="match-info">
+                    <strong th:text="${#temporals.format(nextMatch.date, 'EEEE, MMMM d, yyyy')}">
+                    </strong>
+
+                    <span class="countdown">
+                        <span th:switch="${daysUntilMatch}">
+                            <span th:case="0"> (Today!)</span>
+                            <span th:case="1"> (Tomorrow)</span>
+                            <span th:case="*"> (in <span th:text="${daysUntilMatch}"></span> days)</span>
+                        </span>
+                    </span>
+                </div>
             </div>
+
             <div class="no-match" th:if="${nextMatch == null}">
-                Sem jogos marcados
+                <p>No upcoming matches • Season may have ended</p>
             </div>
         </div>
     </main>

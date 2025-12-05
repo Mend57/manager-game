@@ -42,15 +42,73 @@ h2, h3 { color: #22c55e; margin-bottom: 15px; }
 .btn.primary:hover { background: #16a34a; }
 
 .next-match { text-align: center; }
-.match {
-    font-size: 1.4rem;
+
+.next-day-wrapper {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.advance-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 16px 36px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    transition: all 0.3s ease;
+}
+
+.advance-btn:hover {
+    background: linear-gradient(135deg, #d97706, #b45309);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6);
+}
+
+.message {
+    background: #166534;
+    color: white;
+    padding: 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
     margin: 20px 0;
+}
+
+.match-teams {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.vs {
+    color: #22c55e;
+    font-size: 1.8rem;
+}
+
+.match-info {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.countdown {
+    margin-left: 12px;
+    color: #fbbf24;
     font-weight: bold;
 }
-.match-date {
-    margin-top: 10px;
-    color: #94a3b8;
-    font-size: 1rem;
+
+.no-match p {
+    color: #64748b;
+    font-style: italic;
+    text-align: center;
+    margin: 20px 0;
 }
 
 @media (max-width: 768px) {

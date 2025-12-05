@@ -5,13 +5,16 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-public class Calendar {
+public class GameCalendar {
 
     @Getter @Setter
     private static int day = 15, month = 2, year = 2024;
+    @Getter @Setter
     private static LocalDate date = LocalDate.of(year, month, day);
 
+    @Getter @Setter
     private static LocalDate startOfSeason = LocalDate.of(year, 3, 15);
+    @Getter @Setter
     private static LocalDate endOfSeason = LocalDate.of(year, 12, 15);
 
     private static boolean gameDay;
@@ -21,7 +24,6 @@ public class Calendar {
 
 
     public static void addDays(int days) {
-        LocalDate date     = LocalDate.of(year, month, day);
         LocalDate nextDate = date.plusDays(days);
 
         pendingMonthlyEvents += nextDate.getMonthValue() >= month ? nextDate.getMonthValue() - month : 12-month + nextDate.getMonthValue();
@@ -63,10 +65,11 @@ public class Calendar {
     }
 
     static private void monthlyEvents(){
-
+        System.out.println("monthlyEvents");
     }
 
     static private void biMonthlyEvents(){
+        System.out.println("biMonthlyEvents");
 //        for (Team team : allTeams) {
 //            if (!team.isPlayerCurrentTeam()) {
 //                team.setFormation(team.randomizeFormation());
@@ -75,6 +78,7 @@ public class Calendar {
     }
 
     static private void seasonalEvents(){
+        System.out.println("seasonalEvents");
         //for every player in the game
 //            if(player.retirementDate == null){
 //                if (player.age >= 40 || (player.age >= 30 && Math.random() <= 0.2)) retirementDate = LocalDate.of(year+1, endOfSeason.getMonthValue(), endOfSeason.getDayOfMonth());
@@ -84,6 +88,7 @@ public class Calendar {
 //        }
     }
     static private void endOfSeasonEvents() {
+        System.out.println("endOfSeasonEvents");
         //for every player in the game
 //            if(player.retirementDate != null && !player.retirementDate.isBefore(date)){
 //                //remove player from database

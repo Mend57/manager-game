@@ -1,9 +1,15 @@
 package manager.game.core;
 
 import manager.game.gameplay.League;
+import manager.game.gameplay.Match;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import manager.game.gameplay.GameCalendar;
+
+import java.time.LocalDate;
 
 @Controller
 public class MenuController {
@@ -16,9 +22,29 @@ public class MenuController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("today", java.time.LocalDate.now());
-        model.addAttribute("nextMatch", league.getMatches().length > 0 ? league.getMatches()[0] : null);
+        LocalDate today = GameCalendar.getDate();
+        model.addAttribute("today", today);
+        Match nextMatch = null;
+        for (Match match : league.getMatches()) {
+            if(!match.getDate().isBefore(today)) {
+                nextMatch = match;
+                break;
+            }
+        }
+        model.addAttribute("nextMatch", nextMatch);
+        if (nextMatch != null) {
+            model.addAttribute("daysUntilMatch", LocalDate.from(today).datesUntil(nextMatch.getDate()).count());
+        } else {
+            model.addAttribute("daysUntilMatch", null);
+        }
         return "index";
+    }
+
+    @PostMapping("/advance-day")
+    public String advanceDay(RedirectAttributes redirectAttributes) {
+        GameCalendar.addDays(1);
+        redirectAttributes.addFlashAttribute("message", "Dia avançado com sucesso!");
+        return "redirect:/";
     }
 
     @GetMapping("/schedule")

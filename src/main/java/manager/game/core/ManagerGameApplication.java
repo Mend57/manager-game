@@ -8,6 +8,8 @@ import manager.game.team.Team;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import manager.game.gameplay.GameCalendar;
+
 
 import java.time.LocalDate;
 import java.util.*;
@@ -66,8 +68,7 @@ public class ManagerGameApplication {
         Map<Team, Integer> teamMap = new HashMap<>();
         teams.forEach(team -> teamMap.put(team, team.getPoints()));
 
-        League league1 = new League(1, teamMap, 100000, 1, 2, 2024);
-        return league1;
+        return new League(1, teamMap, 100000, GameCalendar.getStartOfSeason().getDayOfMonth(),
+                GameCalendar.getStartOfSeason().getMonthValue(), 2024);
     }
-
 }
