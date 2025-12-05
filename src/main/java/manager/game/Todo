@@ -43,3 +43,6 @@
 
 -na hora de calcular aniversario atençao ao ano bissexto
 
+-salvar dados em cache mas tbm opçao de login e deixar o save atrelado a conta
+    nas configs opçao de criar novo save e dar load no save se tiver conta (se nao tiver conta pode criar novo save mas apaga o antigo)
+
