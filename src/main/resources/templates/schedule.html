@@ -63,11 +63,11 @@
         th:class="${stat.count <= 4} ? 'top4' : '' + ' ' + (${stat.count > (teams.size() - 4)} ? 'bottom4' : '')">
       <td th:text="${stat.count}"></td>
       <td th:text="${entry.key.name}"></td>
-      <td th:text="${entry.value}"></td>
-      <td th:text="${entry.key.wins + entry.key.draws + entry.key.losses}"></td>
+      <td th:text="${entry.key.points}"></td>
+      <td th:text="${entry.key.matchesPlayed}"></td>
       <td th:text="${entry.key.wins}"></td>
-      <td th:text="${entry.key.draws}"></td>
       <td th:text="${entry.key.losses}"></td>
+      <td th:text="${entry.key.draws}"></td>
       <td th:text="${entry.key.goals}"></td>
       <td th:text="${entry.key.goalsAgainst}"></td>
       <td th:text="${entry.key.goalsBalance}"></td>

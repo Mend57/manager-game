@@ -33,6 +33,8 @@
 
 -player decides if it will renovate contract based mostly on money from other offers, but also team prestige and overall quality
 
+-calculate team prestige
+
 - finish calendar adding every task that we need to do daily, weekly or in any given time
 
 -calculate player estimated price in Player
@@ -40,8 +42,6 @@
 -rework of formation familiarity, take it out from Team and add to Player, then calculate Team formation familiarity based on players
 
 - finish calendar and every unfinished method throughout the codebase(probably unfinished because it depends on the db)
-
--na hora de calcular aniversario atençao ao ano bissexto
 
 -salvar dados em cache mas tbm opçao de login e deixar o save atrelado a conta
     nas configs opçao de criar novo save e dar load no save se tiver conta (se nao tiver conta pode criar novo save mas apaga o antigo)

@@ -59,7 +59,7 @@ public class Match {
             worstTeam  = homeTeam;
         }
 
-        if (decider <= 0.2) return betterTeam;
+        if (decider <= 0.3) return betterTeam;
         if (decider <= 0.5) return worstTeam;
         return null;
     }

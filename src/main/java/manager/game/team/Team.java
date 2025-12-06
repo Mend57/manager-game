@@ -31,7 +31,7 @@ public class Team implements FilterByPosition {
     private double salaryCost;
 
     @Setter(AccessLevel.NONE)
-    private int    goals = 0, goalsAgainst = 0, goalsBalance = 0, wins = 0, losses = 0, draws = 0, points = 0;
+    private int    goals = 0, goalsAgainst = 0, goalsBalance = 0, wins = 0, losses = 0, draws = 0, points = 0, matchesPlayed = 0;
     private int    division;
     private double prestige;
 
@@ -78,6 +78,9 @@ public class Team implements FilterByPosition {
     }
     public void addDraws(int draws){
         this.draws += draws;
+    }
+    public void matchesAmount(int matchesPlayed){
+        this.matchesPlayed += matchesPlayed;
     }
     public void addTransactionBudget(double value){
         this.transactionBudget += value;
