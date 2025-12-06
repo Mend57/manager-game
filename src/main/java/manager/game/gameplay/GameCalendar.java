@@ -2,6 +2,8 @@ package manager.game.gameplay;
 
 import lombok.Getter;
 import lombok.Setter;
+import manager.game.player.Outfield;
+import manager.game.player.Player;
 
 import java.time.LocalDate;
 
@@ -56,7 +58,8 @@ public class GameCalendar {
 
     static private void dailyEvents(){
         //for every player in the game
-            //player.setAge();
+            //if player.getBirthday().getDayOfYear() == date.getDayOfYear()
+                //player.setAge(getAge()++)
 //        for (Match match : //allLeagues.getMatches()){
 //            if (match.getDate() == date){
 //                gameDay = true;

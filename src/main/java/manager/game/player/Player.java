@@ -49,8 +49,7 @@ public abstract class Player {
         this.currentTeam = currentTeam;
         this.forSale     = (this.currentTeam == null);
         this.birthday    = birthday;
-
-        setAge();
+        calculateAge();
     }
 
     public abstract double inGameCompetence();
@@ -73,10 +72,6 @@ public abstract class Player {
     }
     public void unregister(){
         registered = false;
-    }
-    public void setAge(){
-        int yearsDifference = GameCalendar.getYear() - birthday.getYear();
-        age = GameCalendar.getDay() >= birthday.getDayOfMonth() ? yearsDifference : yearsDifference - 1;
     }
     public void estimatePrice(){
         if(!isForSale()) {
@@ -116,6 +111,11 @@ public abstract class Player {
             return (int)Math.round(7 + Math.random() * 14);
         }
         else return (int)Math.round(28 + Math.random() * 28);
+    }
+
+    protected void calculateAge(){
+        int yearsDifference = GameCalendar.getYear() - birthday.getYear();
+        age = (birthday.getDayOfYear() >= GameCalendar.getDate().getDayOfYear()) ? yearsDifference : yearsDifference - 1;
     }
 }
 
