@@ -118,24 +118,6 @@ h2, h3 {
     margin: 20px 0;
 }
 
-.table-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 60px 0 20px 0;
-}
-
-.table-header h2 {
-    margin: 0 auto;
-}
-
-.bottom-menu-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 0 20px 0;
-}
-
 @media (max-width: 768px) {
     main { grid-template-columns: 1fr; }
     header { flex-direction: column; text-align: center; gap: 10px; }
