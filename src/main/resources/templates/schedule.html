@@ -42,7 +42,10 @@
 <body>
 <div class="container">
   <h1 th:text="${leagueName} + ' 2024'">Série A 2024</h1>
-  <h2>Classificação</h2>
+  <div class="table-header">
+    <a th:href="@{/}" class="btn">Menu</a>
+    <h2>Table</h2>
+  </div>
   <table>
     <thead>
     <tr>
@@ -75,15 +78,15 @@
     </tbody>
   </table>
 
-  <h2>Calendário Completo (380 jogos)</h2>
+  <h2>Fixture List (380 Matches)</h2>
   <table>
     <thead>
     <tr>
-      <th>Rodada</th>
-      <th>Data</th>
-      <th>Casa</th>
       <th></th>
-      <th>Visitante</th>
+      <th>Date</th>
+      <th>Home</th>
+      <th></th>
+      <th>Away</th>
     </tr>
     </thead>
     <tbody>
@@ -96,8 +99,9 @@
     </tr>
     </tbody>
   </table>
-
-  <a th:href="@{/}" class="btn">Voltar ao menu</a>
+  <div class="bottom-menu-button">
+    <a th:href="@{/}" class="btn">Menu</a>
+  </div>
 </div>
 </body>
 </html>
